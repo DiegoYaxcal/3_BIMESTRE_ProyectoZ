@@ -1,0 +1,88 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// Declaraciones de funciones
+void ingresarNombreApellido();
+void ingresarNotas();
+void visualizarNotas();
+void calcularPromedio();
+
+// Variables globales
+string nombre, apellido;
+int notas[5];
+
+// Función principal
+int main() {
+  // Muestra el menú al usuario
+  cout << "Bienvenido al sistema de registro de calificaciones de un instituto." << endl;
+  cout << "¿Qué desea hacer?" << endl;
+  cout << "1. Ingresar el nombre y apellido del estudiante." << endl;
+  cout << "2. Ingresar las notas de los cursos asignados por el docente." << endl;
+  cout << "3. Visualizar las notas individuales." << endl;
+  cout << "4. Calcular el promedio general de las notas." << endl;
+  cout << "5. Salir." << endl;
+
+  // Lee la opción del usuario
+  int opcion;
+  cin >> opcion;
+
+  // Realiza la acción seleccionada por el usuario
+  switch (opcion) {
+    case 1:
+      ingresarNombreApellido();
+      break;
+    case 2:
+      ingresarNotas();
+      break;
+    case 3:
+      visualizarNotas();
+      break;
+    case 4:
+      calcularPromedio();
+      break;
+    case 5:
+      return 0;
+    default:
+      cout << "Opción no válida." << endl;
+      break;
+  }
+
+  // Vuelve al menú principal
+  return main();
+}
+
+// Función para ingresar el nombre y apellido del estudiante
+void ingresarNombreApellido() {
+  cout << "Ingrese el nombre del estudiante: ";
+  cin >> nombre;
+  cout << "Ingrese el apellido del estudiante: ";
+  cin >> apellido;
+}
+
+// Función para ingresar las notas de los cursos asignados por el docente
+void ingresarNotas() {
+  for (int i = 0; i < 5; i++) {
+    cout << "Ingrese la nota del curso " << i + 1 << ": ";
+    cin >> notas[i];
+  }
+}
+
+// Función para visualizar las notas individuales
+void visualizarNotas() {
+  cout << "Las notas del estudiante " << nombre << " " << apellido << " son: " << endl;
+  for (int i = 0; i < 5; i++) {
+    cout << "Nota del curso " << i + 1 << ": " << notas[i] << endl;
+  }
+}
+
+// Función para calcular el promedio general de las notas
+void calcularPromedio() {
+  int suma = 0;
+  for (int i = 0; i < 5; i++) {
+    suma += notas[i];
+  }
+  float promedio = (float)suma / 5;
+  cout << "El promedio general de las notas del estudiante " << nombre << " " << apellido << " es: " << promedio << endl;
+}
